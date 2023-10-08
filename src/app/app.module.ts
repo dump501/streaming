@@ -3,17 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { PlaylistComponent } from './playlist/playlist.component';
-import { ChannelComponent } from './channel/channel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    PlaylistComponent,
-    ChannelComponent,
+    HeaderComponent,
+    FooterComponent,
+    MainLayoutComponent,
   ],
   imports: [
     BrowserModule,

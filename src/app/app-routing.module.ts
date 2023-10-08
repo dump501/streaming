@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { PlaylistComponent } from './playlist/playlist.component';
-import { ChannelComponent } from './channel/channel.component';
+import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 
 const routes: Routes = [
-  {path: "", component: HomeComponent},
-  {path: "playlist", component: PlaylistComponent},
-  {path: "channel", component: ChannelComponent}
+  {path: "", component: MainLayoutComponent, children: [
+    {
+      path: "",
+      loadChildren: ()=> import('@modules/home/home.module').then(m => m.HomeModule)
+    }
+  ]}
 ];
 
 @NgModule({
