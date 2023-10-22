@@ -1,0 +1,52 @@
+<div class="manager_wrapper">
+  <div class="sidebar bg-dark text-light px-1">
+    <div class="sidebar_header py-2">
+      <h3>Streaming</h3>
+    </div>
+    <div class="sidebar_items">
+      <a href="" class="sidebar_item"><div>Home</div></a>
+      <a href="" class="sidebar_item"><div>Channels</div></a>
+      <a href="" class="sidebar_item"><div>Playlist</div></a>
+    </div>
+  </div>
+  <div style="width: 100%">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <!-- <a class="navbar-brand" href="#">STREAMING</a> -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarText"
+          aria-controls="navbarText"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                routerLink="/"
+                class="nav-link active"
+                aria-current="page"
+                href="#"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a routerLink="playlist" class="nav-link" href="#">Playlist</a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="playlist" class="nav-link" href="#">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

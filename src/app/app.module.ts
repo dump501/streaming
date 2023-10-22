@@ -7,6 +7,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { ManagerLayoutComponent } from './layout/manager-layout/manager-layout.component';
+import { UploadComponent } from './upload/upload.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +17,14 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
     HeaderComponent,
     FooterComponent,
     MainLayoutComponent,
+    ManagerLayoutComponent,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

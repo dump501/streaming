@@ -1,0 +1,19 @@
+body{
+  background-color: rgb(255, 231, 231);
+}
+
+
+// sidebar
+.manager_wrapper{
+  display: flex;
+  flex-direction: row;
+  .sidebar{
+    width: 240px;
+    min-height: 100vh;
+    .sidebar_item{
+      text-decoration: none;
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}

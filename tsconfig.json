@@ -25,7 +25,8 @@
       "@shared/*": ["app/shared/*"],
       "@env": ["environments/environment"],
       "@modules/*": ["app/modules/*"],
-      "@data/*": ["app/data/*"]
+      "@data/*": ["app/data/*"],
+      "@assets/*": ["app/assets/*"]
     },
     "lib": [
       "ES2022",

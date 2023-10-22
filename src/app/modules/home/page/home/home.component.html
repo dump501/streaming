@@ -1,1 +1,9 @@
-<p>home works!</p>
+<h4>Favorites video</h4>
+<div class="row" *ngIf="videos">
+  <div class="col-12 col-md-3" *ngFor="let video of videos">
+    <a routerLink="/stream" style="text-decoration: none"
+      ><img src="{{ video.thumbnail }}" />
+      {{ video.title }}
+    </a>
+  </div>
+</div>
