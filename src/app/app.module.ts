@@ -9,8 +9,11 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { ManagerLayoutComponent } from './layout/manager-layout/manager-layout.component';
 import { UploadComponent } from './upload/upload.component';
-import { HttpClientModule } from '@angular/common/http';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './core/interceptors/auth/auth.interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './shared/components/register/register.component';
+import { LoginComponent } from './shared/components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,15 +23,23 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MainLayoutComponent,
     ManagerLayoutComponent,
     UploadComponent,
-    DashboardComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,28 @@
+<form [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+  <input
+    type="text"
+    formControlName="email"
+    class="form-control mb-3"
+    placeholder="Email"
+    [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+  />
+  <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+    <div *ngIf="f['email'].errors['required']">The email is required</div>
+    <div *ngIf="f['email'].errors['email']">you should enter an email</div>
+  </div>
+  <input
+    type="password"
+    formControlName="password"
+    class="form-control mb-3"
+    placeholder="password"
+    [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+  />
+  <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+    <div *ngIf="f['password'].errors['required']">The password is required</div>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary ml-3">Login</button>
+    <!-- <div class="mx-2"></div> -->
+    <!-- <button class="btn btn-danger" (click)="d()">Close</button> -->
+  </div>
+</form>

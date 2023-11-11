@@ -1,0 +1,81 @@
+<div class="card mb-4">
+  <div class="card-body d-flex justify-content-between align-items-center">
+    <div>
+      <h2>Channels</h2>
+      <h6>Channels you created</h6>
+    </div>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">Channel</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <h4 class="card-title mb-3">My channels list</h4>
+      <div>
+        <a [routerLink]="['/manager/channel/create']" class="btn btn-primary"
+          >Create Channel</a
+        >
+      </div>
+    </div>
+    <div class="row">
+      <div *ngFor="let channel of channels" class="col-12 col-md-4">
+        <div class="card text-center">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center">
+              <img
+                class="object-fit-fill rounded-circle"
+                style="height: 100px; width: 100px"
+                src="{{ imageRoot }}{{ channel.profile }}"
+                alt=""
+              />
+              <div class="ms-2">
+                <h5>
+                  {{ channel.title }}
+                </h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">
+                  {{ channel.subTitle }}
+                </h6>
+              </div>
+            </div>
+
+            <div>
+              <a href="">Playlists</a> :
+              <ng-template
+                *ngIf="channel.playlists.length >= 10; else less_playlist"
+                >{{ channel.playlists.length }}</ng-template
+              >
+              <ng-template #less_playlist>
+                0{{ channel.playlists.length }}
+              </ng-template>
+            </div>
+            <div>
+              <a href="">Videos</a> :
+              <ng-template
+                *ngIf="channel.playlists.length >= 10; else less_playlist"
+                >{{ channel.videos.length }}</ng-template
+              >
+              <ng-template #less_playlist>
+                0{{ channel.videos.length }}
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link active" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

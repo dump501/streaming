@@ -244,35 +244,99 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mb-2 mb-lg-0">
+              <div class="navbar-nav me-auto"></div>
+              <ul *ngIf="!isAuthenticated" class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <button class="nav-link" (click)="open(content)">
-                    Login
+                  <button class="nav-link" (click)="open(login)">Login</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" (click)="open(register)">
+                    register
                   </button>
                 </li>
               </ul>
-              <div class="input-group input-group-lg" style="width: 100%">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Search video, channel , playlist, user"
-                  aria-label="Recipient's username"
-                  aria-describedby="button-addon2"
-                />
-                <button
-                  class="btn btn-outline-primary"
-                  type="button"
-                  id="button-addon2"
-                >
-                  Search
-                </button>
-              </div>
+              <ul *ngIf="isAuthenticated" class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    [routerLink]="['/']"
+                    routerLinkActive="router-link-active"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    [routerLink]="['/manager/dashboard']"
+                    routerLinkActive="router-link-active"
+                  >
+                    dashboard
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </nav>
         <div style="padding-top: 100px"></div>
 
         <!-- end navbar -->
+        <!-- stard search bar -->
+
+        <div class="position-relative">
+          <div class="z-3 position-fixed" style="width: 100%">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                  <div class="input-group input-group-lg" style="width: 100%">
+                    <!-- <span class="input-group-text">start searching</span> -->
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Search video, channel , playlist, user"
+                      aria-label="Recipient's username"
+                      aria-describedby="button-addon2"
+                    />
+                    <button
+                      class="btn btn-outline-primary"
+                      type="button"
+                      id="button-addon2"
+                    >
+                      Search</button
+                    ><button
+                      type="button"
+                      class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                      Filter
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li>
+                        <a class="dropdown-item" href="#">Another action</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Something else here</a
+                        >
+                      </li>
+                      <li><hr class="dropdown-divider" /></li>
+                      <li>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="padding-top: 100px"></div>
+
+        <!-- end search bar -->
         <!-- main content -->
 
         <div class="container-fluid">
@@ -288,7 +352,7 @@
     <!-- end main -->
     <!-- start login modal -->
 
-    <ng-template #content let-c="close" let-d="dismiss">
+    <ng-template #login let-c="close" let-d="dismiss">
       <div class="modal-content bg-dark text-white" data-bs-theme="dark">
         <div class="modal-header">
           <div class="modal-title">
@@ -297,22 +361,29 @@
           <button class="btn-close" (click)="d('Cross click')"></button>
         </div>
         <div class="modal-body">
-          <input type="text" class="form-control mb-3" placeholder="Email" />
-          <input
-            type="password"
-            class="form-control mb-3"
-            placeholder="password"
-          />
-          <div class="d-flex justify-content-end">
-            <button class="btn btn-primary ml-3">Login</button>
-            <div class="mx-2"></div>
-            <button class="btn btn-danger" (click)="d()">Close</button>
-          </div>
+          <app-login (closeModals)="closeModals()"></app-login>
         </div>
       </div>
     </ng-template>
 
     <!-- end login modal -->
+    <!-- start register modal -->
+
+    <ng-template #register let-c="close" let-d="dismiss">
+      <div class="modal-content bg-dark text-white" data-bs-theme="dark">
+        <div class="modal-header">
+          <div class="modal-title">
+            <h4>Register</h4>
+          </div>
+          <button class="btn-close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+          <app-register (closeModals)="closeModals()"></app-register>
+        </div>
+      </div>
+    </ng-template>
+
+    <!-- end register modal -->
     <!-- start footer -->
 
     <footer class="container py-5">

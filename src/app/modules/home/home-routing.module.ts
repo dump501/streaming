@@ -1,8 +1,8 @@
-import { RouterModule, Routes } from "@angular/router";
-import { HomeComponent } from "./page/home/home.component";
-import { NgModule } from "@angular/core";
-import { PlaylistComponent } from "./page/playlist/playlist.component";
-import { StreamingComponent } from "./page/streaming/streaming.component";
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './page/home/home.component';
+import { NgModule } from '@angular/core';
+import { PlaylistComponent } from './page/playlist/playlist.component';
+import { StreamingComponent } from './page/streaming/streaming.component';
 
 export const routes: Routes = [
   // {
@@ -12,20 +12,20 @@ export const routes: Routes = [
   // },
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: 'playlist',
-    component: PlaylistComponent
+    component: PlaylistComponent,
   },
   {
     path: 'stream',
-    component: StreamingComponent
-  }
+    component: StreamingComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class HomeRoutingModule {}

@@ -10,15 +10,9 @@ import { VideoService } from '@app/data/service/video/video.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  videos: Array<Video>;
+  videos: Array<Video> = [];
   imageRoot: string = CONSTANTS.imageServerRoot;
-  constructor(
-    private dummyData: DummyDataService,
-    private videoService: VideoService
-  ) {
-    this.videos = dummyData.getVideos();
-    console.log(this.videos);
-  }
+  constructor(private videoService: VideoService) {}
 
   kkb() {
     console.log('kkb');

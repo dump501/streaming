@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@app/core/service/auth/auth.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -6,10 +7,15 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss'],
 })
-export class MainLayoutComponent {
+export class MainLayoutComponent implements OnInit {
   theme: string = 'light';
+  isAuthenticated: boolean = false;
 
-  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+  constructor(
+    config: NgbModalConfig,
+    private modalService: NgbModal,
+    private authService: AuthService
+  ) {
     // config modal
     config.backdrop = 'static';
 
@@ -36,5 +42,14 @@ export class MainLayoutComponent {
 
   open(content: any) {
     this.modalService.open(content);
+  }
+
+  closeModals() {
+    this.modalService.dismissAll();
+  }
+
+  ngOnInit(): void {
+    this.isAuthenticated = AuthService.isAuthenticated();
+    console.log('is authenticated: ', this.isAuthenticated);
   }
 }
