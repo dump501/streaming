@@ -10,6 +10,7 @@ import { MainLayoutComponent } from './layout/main-layout/main-layout.component'
 import { ManagerLayoutComponent } from './layout/manager-layout/manager-layout.component';
 import { UploadComponent } from './upload/upload.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     MainLayoutComponent,
     ManagerLayoutComponent,
     UploadComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

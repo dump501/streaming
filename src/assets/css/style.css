@@ -1,0 +1,18 @@
+html {
+  height: -webkit-fill-available;
+}
+
+body {
+  min-height: 100vh;
+}
+
+main {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+/* .top_nav {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  column-gap: 1rem;
+} */
+/* components */

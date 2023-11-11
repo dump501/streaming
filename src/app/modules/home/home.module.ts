@@ -4,6 +4,7 @@ import { HomeComponent } from './page/home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { PlaylistComponent } from './page/playlist/playlist.component';
 import { StreamingComponent } from './page/streaming/streaming.component';
+import { LoginComponent } from './page/login/login/login.component';
 
 
 
@@ -11,7 +12,9 @@ import { StreamingComponent } from './page/streaming/streaming.component';
   declarations: [
     HomeComponent,
     PlaylistComponent,
-    StreamingComponent
+    StreamingComponent,
+    LoginComponent,
+
   ],
   imports: [
     CommonModule, HomeRoutingModule

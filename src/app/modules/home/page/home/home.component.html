@@ -1,9 +1,26 @@
-<h4>Favorites video</h4>
+<div class="d-flex justify-content-between mb-2">
+  <h4>Favorites video</h4>
+  <button class="btn btn-outline-primary">See all</button>
+</div>
+<hr />
 <div class="row" *ngIf="videos">
   <div class="col-12 col-md-3" *ngFor="let video of videos">
-    <a routerLink="/stream" style="text-decoration: none"
-      ><img src="{{ video.thumbnail }}" />
-      {{ video.title }}
+    <a routerLink="/stream" style="text-decoration: none">
+      <div class="card mb-4">
+        <img src="{{ imageRoot }}{{ video.thumbnail }}" class="card-img-top" />
+        <div class="card-body">
+          <!-- <div class="card-img-overlay bg-glass">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              This is a wider card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <p class="card-text"><small>Last updated 3 mins ago</small></p>
+          </div> -->
+          {{ video.title }}
+        </div>
+      </div>
     </a>
   </div>
 </div>
