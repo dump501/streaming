@@ -245,6 +245,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <div class="navbar-nav me-auto"></div>
+              {{ isAuthenticated }}
               <ul *ngIf="!isAuthenticated" class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
                   <button class="nav-link" (click)="open(login)">Login</button>
@@ -260,7 +261,7 @@
                   <a
                     class="nav-link"
                     [routerLink]="['/']"
-                    routerLinkActive="router-link-active"
+                    routerLinkActive="active"
                     >Home</a
                   >
                 </li>
@@ -268,9 +269,14 @@
                   <a
                     class="nav-link"
                     [routerLink]="['/manager/dashboard']"
-                    routerLinkActive="router-link-active"
+                    routerLinkActive="active"
                   >
                     dashboard
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" type="button" (click)="logout()">
+                    logout
                   </a>
                 </li>
               </ul>

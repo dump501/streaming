@@ -6,6 +6,7 @@ import { UploadComponent } from './upload/upload.component';
 import { ManagerModule } from '@modules/manager/manager.module';
 import { DashboardComponent } from './modules/manager/page/dashboard/dashboard.component';
 import { ChannelListComponent } from './modules/manager/page/channel-list/channel-list.component';
+import { NotFoundComponent } from './shared/pages/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: UploadComponent,
+    component: NotFoundComponent,
   },
   // {
   //   path: 'upload',

@@ -3,6 +3,8 @@ import { AuthService } from '@app/core/service/auth/auth.service';
 import AuthDetail from '@app/data/schema/AuthDetail';
 import User from '@app/data/schema/User';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-manager-layout',
@@ -11,14 +13,17 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ManagerLayoutComponent {
   theme: string = 'light';
-  authDetails: AuthDetail;
+  authDetails: AuthDetail = new AuthDetail();
   todayDate: string = '';
 
   constructor(
     private modalService: NgbModal,
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store<{ auth: AuthDetail }>
   ) {
-    this.authDetails = AuthService.getUserDetails() ?? new AuthDetail();
+    this.store.select('auth').subscribe((data) => {
+      this.authDetails = data;
+    });
     let date = new Date();
     this.todayDate = date.toDateString();
 

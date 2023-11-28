@@ -14,6 +14,11 @@ import { AuthInterceptor } from './core/interceptors/auth/auth.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './shared/components/register/register.component';
 import { LoginComponent } from './shared/components/login/login.component';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './core/store/counter/counter.reducer';
+import { CounterComponent } from './counter/counter.component';
+import { authReducer } from './core/store/authStore/auth.reducer';
+import { dataReducer } from './core/store/dataStore/data.reducer';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,7 @@ import { LoginComponent } from './shared/components/login/login.component';
     UploadComponent,
     RegisterComponent,
     LoginComponent,
+    CounterComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +38,11 @@ import { LoginComponent } from './shared/components/login/login.component';
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
+    StoreModule.forRoot({
+      count: counterReducer,
+      auth: authReducer,
+      data: dataReducer,
+    }),
   ],
   providers: [
     {

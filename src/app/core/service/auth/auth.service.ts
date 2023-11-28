@@ -11,46 +11,27 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    return this.http.post<AuthDetail>(`${CONSTANTS.apiRoot}/auth/login`, {
-      email,
-      password,
-    });
+    return this.http.post<AuthDetail>(
+      `${CONSTANTS.apiRoot}/auth/login`,
+      {
+        email,
+        password,
+      },
+      { observe: 'response' }
+    );
   }
 
   register(name: string, email: string, password: string) {
-    return this.http.post<User>(`${CONSTANTS.apiRoot}/auth/register`, {
-      name,
-      email,
-      password,
-    });
-  }
-
-  static isAuthenticated() {
-    let authItems: string = localStorage.getItem('authDetails') ?? '{}';
-    let authDetails: AuthDetail = JSON.parse(authItems);
-    console.log(authDetails);
-    let expirationTime = new Date(authDetails.expiresIn ?? 0);
-
-    if (expirationTime > new Date()) {
-      console.log('ok');
-
-      return true;
-    }
-    return false;
-  }
-
-  static getUserDetails() {
-    if (!AuthService.isAuthenticated()) {
-      return null;
-    }
-
-    let details: AuthDetail = JSON.parse(
-      localStorage.getItem('authDetails') ?? '{}'
+    return this.http.post<User>(
+      `${CONSTANTS.apiRoot}/auth/register`,
+      {
+        name,
+        email,
+        password,
+      },
+      {
+        observe: 'response',
+      }
     );
-    return details;
-  }
-
-  setUserDetails(authDetails: AuthDetail) {
-    localStorage.setItem('authDetails', JSON.stringify(authDetails));
   }
 }

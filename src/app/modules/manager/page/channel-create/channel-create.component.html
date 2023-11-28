@@ -17,22 +17,42 @@
 <div class="card">
   <div class="card-body">
     <h4 class="card-title mb-3">Channel creation form</h4>
-    <form class="row">
+    <form class="row" [formGroup]="form" (ngSubmit)="handleChannelCreate()">
       <div class="col-12 col-md-6 mb-3">
         <label class="mb-2" for="">Title</label>
-        <input type="text" class="form-control" placeholder="Title example" />
+        <input
+          type="text"
+          formControlName="title"
+          class="form-control"
+          placeholder="Title example"
+          [ngClass]="{ 'is-invalid': submitted && f['title'].errors }"
+        />
+        <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+          <div *ngIf="f['title'].errors['required']">The title is required</div>
+        </div>
       </div>
       <div class="col-12 col-md-6">
         <label class="mb-2" for="">Subitle</label>
         <input
           type="text"
+          formControlName="subTitle"
           class="form-control"
           placeholder="subtitle example"
+          [ngClass]="{ 'is-invalid': submitted && f['subTitle'].errors }"
         />
+        <div *ngIf="submitted && f['subTitle'].errors" class="invalid-feedback">
+          <div *ngIf="f['subTitle'].errors['required']">
+            The sub-title is required
+          </div>
+        </div>
       </div>
       <div class="col-12 col-md-6 mb-3">
         <label class="mb-2" for="">Profile image</label>
-        <input class="form-control" type="file" />
+        <input
+          class="form-control"
+          type="file"
+          (change)="handleFileChange($event)"
+        />
       </div>
       <div class="col-12 mb-3">
         <label for="exampleFormControlTextarea1" class="form-label"
@@ -40,12 +60,22 @@
         >
         <textarea
           class="form-control"
+          formControlName="description"
           placeholder="Channel description goes here ..."
           rows="3"
+          [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
         ></textarea>
+        <div
+          *ngIf="submitted && f['description'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['description'].errors['required']">
+            The description is required
+          </div>
+        </div>
       </div>
       <div class="col-12 col-md-6">
-        <button class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Create</button>
       </div>
     </form>
   </div>

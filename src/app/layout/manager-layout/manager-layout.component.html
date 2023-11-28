@@ -352,7 +352,7 @@
       <!-- end sidebar -->
       <!-- start content wrapper -->
 
-      <div class="ms-3" style="width: 100%">
+      <div class="ms-3 overflow-y-auto" style="width: 100%">
         <!-- start navbar -->
 
         <header class="navbar d-flex px-3 py-3 justify-content-between mb-3">
@@ -389,11 +389,14 @@
         <!-- end navbar -->
         <!-- main content -->
 
-        <div class="container-fluid overflow-y-auto" style="height: 100%">
+        <div class="container-fluid">
           <router-outlet></router-outlet>
         </div>
 
         <!-- end main content -->
+        <!-- start toast -->
+        <!-- <ngb-toast header="A header"> content </ngb-toast> -->
+        <!-- end toast -->
       </div>
 
       <!-- end content wrapper -->
