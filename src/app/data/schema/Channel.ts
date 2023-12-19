@@ -1,4 +1,5 @@
 import Playlist from './Playlist';
+import User from './User';
 import Video from './Video';
 
 export default class Channel {
@@ -9,4 +10,5 @@ export default class Channel {
   public profile: string | undefined;
   public playlists: Array<Playlist> = new Array<Playlist>();
   public videos: Array<Video> = new Array<Video>();
+  public author: User = new User();
 }

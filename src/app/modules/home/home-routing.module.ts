@@ -19,7 +19,7 @@ export const routes: Routes = [
     component: PlaylistComponent,
   },
   {
-    path: 'stream',
+    path: 'stream/:uuid',
     component: StreamingComponent,
   },
 ];

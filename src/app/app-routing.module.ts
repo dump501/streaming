@@ -7,6 +7,7 @@ import { ManagerModule } from '@modules/manager/manager.module';
 import { DashboardComponent } from './modules/manager/page/dashboard/dashboard.component';
 import { ChannelListComponent } from './modules/manager/page/channel-list/channel-list.component';
 import { NotFoundComponent } from './shared/pages/not-found/not-found.component';
+import { authGuard } from './core/guards/auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -36,6 +37,7 @@ const routes: Routes = [
           ),
       },
     ],
+    canActivate: [authGuard],
   },
   {
     path: '**',

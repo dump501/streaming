@@ -13,4 +13,10 @@ export class GlobalService {
       observe: 'response',
     });
   }
+
+  uploadVideo(data: FormData) {
+    return this.http.post(`${CONSTANTS.apiRoot}/upload`, data, {
+      observe: 'response',
+    });
+  }
 }

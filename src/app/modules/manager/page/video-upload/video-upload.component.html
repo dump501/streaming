@@ -1,0 +1,51 @@
+<form class="row" [formGroup]="form" (ngSubmit)="handleVideoUpload()">
+  <div class="col-12 mb-3">
+    <label class="mb-2" for="">Title</label>
+    <input
+      type="text"
+      formControlName="title"
+      class="form-control"
+      placeholder="Title example"
+      [ngClass]="{ 'is-invalid': submitted && f['title'].errors }"
+    />
+    <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+      <div *ngIf="f['title'].errors['required']">The title is required</div>
+    </div>
+  </div>
+  <div class="col-12 mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label"
+      >Description</label
+    >
+    <textarea
+      class="form-control"
+      formControlName="description"
+      placeholder="Channel description goes here ..."
+      rows="3"
+      [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
+    ></textarea>
+    <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+      <div *ngIf="f['description'].errors['required']">
+        The description is required
+      </div>
+    </div>
+  </div>
+  <div class="col-12 mb-3">
+    <label class="mb-2" for="">Thumbnail image</label>
+    <input
+      class="form-control"
+      type="file"
+      (change)="handleFileChange($event)"
+    />
+  </div>
+  <div class="col-12 mb-3">
+    <label class="mb-2" for="">Video</label>
+    <input
+      class="form-control"
+      type="file"
+      (change)="handleVideoChange($event)"
+    />
+  </div>
+  <div class="col-12 col-md-6">
+    <button type="submit" class="btn btn-primary">Add playlist</button>
+  </div>
+</form>

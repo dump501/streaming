@@ -1,1 +1,43 @@
-<p>playlist-create works!</p>
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title mb-3">Add playlist on channel name Channel</h4>
+    <form class="row" [formGroup]="form" (ngSubmit)="handlePlaylistCreate()">
+      <div class="col-12 mb-3">
+        <label class="mb-2" for="">Title</label>
+        <input
+          type="text"
+          formControlName="title"
+          class="form-control"
+          placeholder="Title example"
+          [ngClass]="{ 'is-invalid': submitted && f['title'].errors }"
+        />
+        <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+          <div *ngIf="f['title'].errors['required']">The title is required</div>
+        </div>
+      </div>
+      <div class="col-12 mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"
+          >Description</label
+        >
+        <textarea
+          class="form-control"
+          formControlName="description"
+          placeholder="Channel description goes here ..."
+          rows="3"
+          [ngClass]="{ 'is-invalid': submitted && f['description'].errors }"
+        ></textarea>
+        <div
+          *ngIf="submitted && f['description'].errors"
+          class="invalid-feedback"
+        >
+          <div *ngIf="f['description'].errors['required']">
+            The description is required
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6">
+        <button type="submit" class="btn btn-primary">Add playlist</button>
+      </div>
+    </form>
+  </div>
+</div>

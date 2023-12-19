@@ -5,9 +5,14 @@
 <hr />
 <div class="row" *ngIf="videos">
   <div class="col-12 col-md-3" *ngFor="let video of videos">
-    <a routerLink="/stream" style="text-decoration: none">
+    <a routerLink="/stream/{{ video.uuid }}" style="text-decoration: none">
       <div class="card mb-4">
-        <img src="{{ imageRoot }}{{ video.thumbnail }}" class="card-img-top" />
+        <img
+          src="{{ imageRoot }}{{ video.thumbnail }}"
+          class="card-img-top"
+          style="max-height: 200px"
+          alt=""
+        />
         <div class="card-body">
           <!-- <div class="card-img-overlay bg-glass">
             <h5 class="card-title">Card title</h5>

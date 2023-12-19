@@ -29,7 +29,7 @@ export class ChannelListComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getProfile().subscribe({
       next: (data) => {
-        console.log(data);
+        // console.log(data);
         if (data.status === 200) {
           this.channels = data.body?.channels ?? [];
         } else {

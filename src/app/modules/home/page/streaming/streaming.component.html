@@ -2,57 +2,99 @@
   <div class="col-12 col-md-8">
     <video
       width="100%"
-      src="http://localhost:8080/stream/e0581d08-4f59-4929-93f5-6940d3da66d3"
+      src="http://localhost:8080/stream/{{ uuid }}"
       controls
     ></video>
+    <div class="d-flex mt-3 align-items-center">
+      <img
+        src="{{ imageRoot }}{{ video.channel.author.profile }}"
+        class="rounded-circle"
+        style="height: 40px; width: 40px"
+        alt=""
+      />
+      <div>
+        <span class="fw-bold ms-2">{{ video.channel.author.name }}</span
+        >,
+        {{ video.channel.author.email }}
+      </div>
+    </div>
+    <div class="my-3">
+      <div class="fw-bold">{{ video.title }}</div>
+      <div>{{ video.description }}</div>
+    </div>
 
     <div class="row">
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between align-items-center mb-3">
         <h5>Comments</h5>
-        <button class="btn btn-primary">Add comment</button>
+        <button class="btn btn-primary" (click)="setCommentShow(true)">
+          Add comment
+        </button>
+      </div>
+      <div *ngIf="isCommentShow">
+        <textarea
+          class="form-control mb-3"
+          rows="3"
+          placeholder="Type your comment here 🤞 ... "
+          (change)="handleCommentChange($event)"
+          >{{ comment }}</textarea
+        >
+        <div class="d-flex justify-content-end">
+          <button class="btn btn-primary" (click)="handleCommentAdd()">
+            Comment
+          </button>
+        </div>
       </div>
       <div class="col-12">
-        <div class="d-flex">
+        <div class="d-flex mb-3" *ngFor="let comment of video.comments">
           <img
-            src="assets/images/api.png"
+            src="{{ imageRoot }}{{ comment.author.profile }}"
             style="height: 50px; width: 50px; border-radius: 50%"
+            alt=""
           />
-          <div>
-            <div>Tsafack Albin</div>
-            <div>Très beau tutoriel</div>
-          </div>
-        </div>
-        <div class="d-flex">
-          <img
-            src="assets/images/api.png"
-            style="height: 50px; width: 50px; border-radius: 50%"
-          />
-          <div>
-            <div>Tsafack Albin</div>
-            <div>Très beau tutoriel</div>
+          <div class="ms-2">
+            <div class="fw-bold">{{ comment.author.name }}</div>
+            <div>{{ comment.content }}</div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="col-12 col-md-4">
-    <h5>Playlist</h5>
-    <div class="row">
+    <h5>Channel</h5>
+    <div class="row mb-3">
       <div class="col-12">
         <div class="d-flex align-items-center">
-          <img style="height: 50px; width: auto" src="assets/images/api.png" />
-          <div class="px-1">Title</div>
+          <img
+            style="height: 50px; width: 50px"
+            src="assets/images/api.png"
+            class="rounded-circle"
+            alt=""
+          />
+          <div class="ps-2">
+            <div class="fw-bold">{{ video.channel.title }}</div>
+            <div>{{ video.channel.subTitle }}</div>
+          </div>
         </div>
       </div>
     </div>
-    <h5>Related videos</h5>
-    <div class="row">
-      <div class="col-12">
-        <div class="d-flex align-items-center">
-          <img style="height: 50px; width: auto" src="assets/images/api.png" />
-          <div class="px-1">Title</div>
+    <div class="mb-2">
+      <span class="fw-bold">Playlist </span>: {{ video.playlist.title }}
+    </div>
+    <div class="row" *ngIf="video.playlist.videos">
+      <a
+        routerLink="/stream/{{ vid.uuid }}"
+        *ngFor="let vid of video.playlist.videos"
+      >
+        <div class="d-flex align-items-center mb-2 pb-2">
+          <img
+            style="height: 50px; width: auto"
+            src="{{ imageRoot }}{{ vid.thumbnail }}"
+            class="rounded"
+            alt=""
+          />
+          <div class="ps-2">{{ vid.title }}</div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </div>

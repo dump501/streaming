@@ -48,6 +48,10 @@ export class ChannelCreateComponent implements OnInit {
     }
     console.log(this.form.value);
 
+    if (!this.profile) {
+      alert('You need to upload The profile image');
+    }
+
     // try to upload the profile image
     let formData = new FormData();
     formData.append('file', this.profile!);

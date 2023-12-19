@@ -23,10 +23,6 @@ export const routes: Routes = [
     path: 'channel/show',
     component: ChannelShowComponent,
   },
-  {
-    path: 'playlist/create',
-    component: PlaylistCreateComponent,
-  },
 ];
 
 @NgModule({

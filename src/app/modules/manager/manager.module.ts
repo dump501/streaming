@@ -10,6 +10,7 @@ import { PlaylistCreateComponent } from './page/playlist-create/playlist-create.
 import { ChannelShowComponent } from './page/channel-show/channel-show.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '@app/core/interceptors/auth/auth.interceptor';
+import { VideoUploadComponent } from './page/video-upload/video-upload.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AuthInterceptor } from '@app/core/interceptors/auth/auth.interceptor';
     PlaylistComponent,
     PlaylistCreateComponent,
     ChannelShowComponent,
+    VideoUploadComponent,
   ],
   imports: [CommonModule, ManagerRoutingModule, ReactiveFormsModule],
   providers: [
